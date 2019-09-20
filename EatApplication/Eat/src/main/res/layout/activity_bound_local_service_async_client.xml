@@ -1,42 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:stretchColumns="*"
-        android:shrinkColumns="*">
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:shrinkColumns="*"
+    android:stretchColumns="*">
 
     <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
         <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Send request"
-                android:layout_weight="1"
-                android:onClick="onClickExecuteOnClientUIThread"/>
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:text="Send request" />
+        <!--android:onClick="onClickExecuteOnClientUIThread"-->
 
         <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Unbind local service"
-                android:singleLine="false"
-                android:layout_weight="1"
-                android:onClick="onUnbindLocal"
-                android:visibility="invisible"/>
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:singleLine="false"
+            android:text="Unbind local service"
+            android:visibility="invisible" />
+        <!--android:onClick="onUnbindLocal"-->
     </TableRow>
 
     <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-                android:id="@+id/text_status"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Status field" />
+            android:id="@+id/text_status"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Status field" />
 
     </TableRow>
 

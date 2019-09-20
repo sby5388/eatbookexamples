@@ -11,6 +11,7 @@ public class BoundLocalService extends Service {
 
     private final ServiceBinder mBinder = new ServiceBinder();
 
+    @Override
     public IBinder onBind(Intent intent) {
         return mBinder;
     }

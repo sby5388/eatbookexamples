@@ -1,8 +1,8 @@
 package com.eat;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.eat.chapter10.Chapter10Activity;
@@ -17,7 +17,7 @@ import com.eat.chapter7.Chapter7Activity;
 import com.eat.chapter8.Chapter8Activity;
 import com.eat.chapter9.Chapter9Activity;
 
-public class StartActivity extends Activity {
+public class StartActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

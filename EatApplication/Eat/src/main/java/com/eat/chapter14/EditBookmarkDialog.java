@@ -1,5 +1,6 @@
 package com.eat.chapter14;
 
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,18 +10,30 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.eat.R;
+import com.eat.chapter4.ChromeBookmarkAsyncHandler;
 
 public class EditBookmarkDialog extends DialogFragment {
 
-    static EditBookmarkDialog newInstance(ChromeBookmarkActivity.ChromeBookmarkAsyncHandler asyncQueryHandler) {
-        EditBookmarkDialog dialog = new EditBookmarkDialog(asyncQueryHandler);
-        return dialog;
+
+    static EditBookmarkDialog newInstance() {
+        return new EditBookmarkDialog();
     }
 
-    ChromeBookmarkActivity.ChromeBookmarkAsyncHandler mAsyncQueryHandler;
+    ChromeBookmarkAsyncHandler mAsyncQueryHandler;
+    private HostInterface mHostInterface;
 
-    public EditBookmarkDialog(ChromeBookmarkActivity.ChromeBookmarkAsyncHandler asyncQueryHandler) {
-        mAsyncQueryHandler = asyncQueryHandler;
+    public EditBookmarkDialog() {
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof HostInterface) {
+            mHostInterface = (HostInterface) activity;
+            mAsyncQueryHandler = mHostInterface.getChromeBookmarkAsyncHandler();
+        }else{
+            throw new RuntimeException("activity must implements HostInterface");
+        }
     }
 
     @Override
@@ -32,6 +45,7 @@ public class EditBookmarkDialog extends DialogFragment {
         Button buttonSave = (Button) v.findViewById(R.id.button_save);
 
         buttonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 String name = editName.getText().toString();
                 String url = editUrl.getText().toString();
@@ -41,6 +55,10 @@ public class EditBookmarkDialog extends DialogFragment {
         });
 
         return v;
+    }
+
+    public interface HostInterface {
+        ChromeBookmarkAsyncHandler getChromeBookmarkAsyncHandler();
     }
 
 

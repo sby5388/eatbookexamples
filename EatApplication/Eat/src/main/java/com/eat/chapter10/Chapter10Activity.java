@@ -1,13 +1,13 @@
 package com.eat.chapter10;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.eat.R;
 
-public class Chapter10Activity extends Activity {
+public class Chapter10Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

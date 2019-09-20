@@ -3,13 +3,14 @@ package com.eat.chapter12;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.eat.R;
 import com.eat.chapter11.BoundLocalActivity;
 import com.eat.chapter11.BoundLocalActivity2;
 
-public class Chapter12Activity extends Activity {
+public class Chapter12Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

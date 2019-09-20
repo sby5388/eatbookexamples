@@ -1,6 +1,7 @@
 package com.eat.chapter11;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.IBinder;
@@ -16,6 +17,11 @@ public class DownloadService extends Service {
     private ExecutorService mDownloadExecutor;
     private int mCommandCount;
 
+    public static Intent newIntent(Context context) {
+        return new Intent(context,DownloadService.class);
+    }
+
+    @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
@@ -48,6 +54,7 @@ public class DownloadService extends Service {
             @Override
             public void run() {
 
+                // TODO: 2019/9/9 模拟下载
                 // Simulate long file download
                 SystemClock.sleep(10000);
 

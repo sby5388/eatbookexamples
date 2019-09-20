@@ -1,10 +1,11 @@
 package com.eat.chapter10;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.TrafficStats;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -14,17 +15,18 @@ import com.eat.R;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.ref.WeakReference;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 
-public class FileDownloadActivity extends Activity {
+public class FileDownloadActivity extends AppCompatActivity {
 
     private static final String[] DOWNLOAD_URLS = {
-            "http://developer.android.com/design/media/devices_displays_density@2x.png",
-            "http://developer.android.com/design/media/iconography_launcher_example2.png",
-            "http://developer.android.com/design/media/iconography_actionbar_focal.png",
-            "http://developer.android.com/design/media/iconography_actionbar_colors.png"
+            "http://d.lanrentuku.com/down/png/1904/international_food.jpg",
+            "http://d.lanrentuku.com/down/png/1904/fantasy_and_role_play_game.jpg",
+            "http://d.lanrentuku.com/down/png/1904/social_media_2019.jpg",
+            "http://d.lanrentuku.com/down/png/1904/food-icons-const.jpg"
     };
 
     DownloadTask mFileDownloaderTask;
@@ -49,28 +51,32 @@ public class FileDownloadActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mFileDownloaderTask.setActivity(null);
+        mFileDownloaderTask.clearActivity();
         mFileDownloaderTask.cancel(true);
     }
 
     private static class DownloadTask extends AsyncTask<String, Bitmap, Void> {
 
-        private FileDownloadActivity mActivity;
+        private WeakReference<FileDownloadActivity> mReference;
         private int mCount = 0;
 
-        public DownloadTask(FileDownloadActivity activity) {
-            mActivity = activity;
+        DownloadTask(FileDownloadActivity activity) {
+            mReference = new WeakReference<>(activity);
         }
 
-        public void setActivity(FileDownloadActivity activity) {
-            mActivity = activity;
+        void clearActivity() {
+            mReference.clear();
         }
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            mActivity.mProgressBar.setVisibility(View.VISIBLE);
-            mActivity.mProgressBar.setProgress(0);
+            final FileDownloadActivity activity = mReference.get();
+            if (activity == null) {
+                return;
+            }
+            activity.mProgressBar.setVisibility(View.VISIBLE);
+            activity.mProgressBar.setProgress(0);
         }
 
         @Override
@@ -85,40 +91,49 @@ public class FileDownloadActivity extends Activity {
         }
 
 
+        // TODO: 2019/7/27 进度值不一定要使用数值，也可以是其他的类型
         @Override
         protected void onProgressUpdate(Bitmap... bitmaps) {
             super.onProgressUpdate(bitmaps);
-            if (mActivity != null)  {
-                mActivity.mProgressBar.setProgress(++mCount);
-                ImageView iv = new ImageView(mActivity);
-                iv.setImageBitmap(bitmaps[0]);
-                mActivity.mLayoutImages.addView(iv);
+            final FileDownloadActivity activity = mReference.get();
+            if (activity == null) {
+                return;
             }
+            activity.mProgressBar.setProgress(++mCount);
+            ImageView iv = new ImageView(activity);
+            iv.setImageBitmap(bitmaps[0]);
+            activity.mLayoutImages.addView(iv);
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            if (mActivity != null) {
-                mActivity.mProgressBar.setVisibility(View.GONE);
+            final FileDownloadActivity activity = mReference.get();
+            if (activity == null) {
+                return;
             }
+            activity.mProgressBar.setVisibility(View.GONE);
         }
 
         @Override
         protected void onCancelled() {
             super.onCancelled();
-            if (mActivity != null) {
-                mActivity.mProgressBar.setVisibility(View.GONE);
+            final FileDownloadActivity activity = mReference.get();
+            if (activity == null) {
+                return;
             }
+            activity.mProgressBar.setVisibility(View.GONE);
         }
 
 
         private Bitmap downloadFile(String url) {
+            final int THREAD_ID = 10050;
             Bitmap bitmap = null;
             try {
                 bitmap = BitmapFactory
                         .decodeStream((InputStream) new URL(url)
                                 .getContent());
+                TrafficStats.setThreadStatsTag(THREAD_ID);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -127,5 +142,9 @@ public class FileDownloadActivity extends Activity {
             return bitmap;
         }
 
+    }
+
+    private void temp(String path) {
+//        BitmapFactory.
     }
 }

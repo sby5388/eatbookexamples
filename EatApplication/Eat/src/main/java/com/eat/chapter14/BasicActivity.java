@@ -4,17 +4,19 @@ import android.app.Activity;
 import android.app.LoaderManager;
 import android.content.Loader;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
 import com.eat.R;
 
-public class BasicActivity extends Activity implements LoaderManager.LoaderCallbacks<Integer>{
+public class BasicActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Integer> {
 
     private static final int BASIC_LOADER_ID = 0;
 
     TextView tvResult;
 
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic);

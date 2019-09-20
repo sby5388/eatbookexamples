@@ -1,11 +1,11 @@
 package com.eat.chapter3;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.eat.R;
 
-public class Chapter3Activity extends Activity {
+public class Chapter3Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

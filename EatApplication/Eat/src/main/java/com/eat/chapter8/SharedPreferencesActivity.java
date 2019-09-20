@@ -1,38 +1,51 @@
 package com.eat.chapter8;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
 import com.eat.R;
 
+import java.lang.ref.WeakReference;
 
-public class SharedPreferencesActivity extends Activity {
+
+public class SharedPreferencesActivity extends AppCompatActivity {
 
     TextView mTextValue;
 
     /**
      * Show read value in a TextView.
      */
-    private Handler mUiHandler = new Handler() {
+    private Handler mUiHandler = new MyHandler(this);
+
+    private static class MyHandler extends Handler {
+        private final WeakReference<SharedPreferencesActivity> mReference;
+
+        private MyHandler(SharedPreferencesActivity activity) {
+            this.mReference = new WeakReference<>(activity);
+        }
+
         @Override
         public void handleMessage(Message msg) {
-            super.handleMessage(msg);
+            final SharedPreferencesActivity activity = mReference.get();
+            if (activity == null) {
+                return;
+            }
             if (msg.what == 0) {
-                Integer i = (Integer)msg.obj;
-                mTextValue.setText(Integer.toString(i));
+                final Integer i = (Integer) msg.obj;
+                activity.mTextValue.setText(String.valueOf(i));
             }
         }
-    };
+    }
 
     private class SharedPreferenceThread extends HandlerThread {
+        private static final String TAG = "SharedPreferenceThread";
 
         private static final String KEY = "key";
         private SharedPreferences mPrefs;
@@ -41,35 +54,41 @@ public class SharedPreferencesActivity extends Activity {
 
         private Handler mHandler;
 
-        public SharedPreferenceThread() {
-            super("SharedPreferenceThread", Process.THREAD_PRIORITY_BACKGROUND);
+        SharedPreferenceThread() {
+            super(TAG, Process.THREAD_PRIORITY_BACKGROUND);
             mPrefs = getSharedPreferences("LocalPrefs", MODE_PRIVATE);
         }
 
         @Override
         protected void onLooperPrepared() {
             super.onLooperPrepared();
+            // TODO: 2019/9/9 Handler(getLooper()) 跟Handler() 的差别 ??
+            // FIXME: 2019/9/9
+
             mHandler = new Handler(getLooper()) {
                 @Override
                 public void handleMessage(Message msg) {
-                    switch(msg.what) {
+                    switch (msg.what) {
                         case READ:
                             mUiHandler.sendMessage(mUiHandler.obtainMessage(0, mPrefs.getInt(KEY, 0)));
                             break;
                         case WRITE:
                             SharedPreferences.Editor editor = mPrefs.edit();
-                            editor.putInt(KEY, (Integer)msg.obj);
-                            editor.commit();
+                            editor.putInt(KEY, (Integer) msg.obj);
+                            editor.apply();
+                            break;
+                        default:
                             break;
                     }
                 }
             };
         }
 
-        public void read() {
+        void read() {
             mHandler.sendEmptyMessage(READ);
         }
-        public void write(int i) {
+
+        void write(int i) {
             mHandler.sendMessage(Message.obtain(Message.obtain(mHandler, WRITE, i)));
         }
     }

@@ -21,6 +21,7 @@ public class ContactActivity extends ListActivity implements LoaderManager.Loade
 
     SimpleCursorAdapter mAdapter;
 
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initAdapter();

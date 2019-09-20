@@ -1,16 +1,16 @@
 package com.eat.chapter12;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.eat.R;
 
-public class WebServiceActivity extends Activity {
+public class WebServiceActivity extends AppCompatActivity {
 
     private final static String TAG = WebServiceActivity.class.getSimpleName();
     private final static String getUrl = "http://dn.se"; // Dummy
@@ -26,11 +26,10 @@ public class WebServiceActivity extends Activity {
                 String jsonResult = null;
                 if (httpStatus == 200) { // OK
                     if (resultData != null) {
-                        jsonResult= resultData.getString(WebService.BUNDLE_KEY_REQUEST_RESULT);
+                        jsonResult = resultData.getString(WebService.BUNDLE_KEY_REQUEST_RESULT);
                         // Omitted: Handle response
                     }
-                }
-                else {
+                } else {
                     // Handle error
                 }
             }

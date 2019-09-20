@@ -1,8 +1,8 @@
 package com.eat.chapter9;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -18,13 +18,14 @@ import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 
 
-public class InvokeActivity extends Activity {
+public class InvokeActivity extends AppCompatActivity {
 
 
     private static final String TAG = "InvokeActivity";
 
     private TextView textStatus;
 
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invoke);
@@ -52,7 +53,7 @@ public class InvokeActivity extends Activity {
                     }
                 });
 
-                ThreadPoolExecutor executor = (ThreadPoolExecutor)Executors.newFixedThreadPool(2);
+                ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(2);
                 try {
                     Log.d(TAG, "invokeAll");
                     List<Future<String>> futures = executor.invokeAll(tasks);

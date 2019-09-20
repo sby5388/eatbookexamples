@@ -1,14 +1,13 @@
 package com.eat.chapter14;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.eat.R;
-import com.eat.chapter13.ExpandableContactListActivity;
 
-public class Chapter14Activity extends Activity {
+public class Chapter14Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -34,9 +34,12 @@ public class NetworkCheckerIntentService extends IntentService {
                         .setContentTitle("New network data")
                         .setContentText("New data can be downloaded.");
 
-        NotificationManager mNotificationManager =
+        final NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.notify(1, mBuilder.build());
+        if (notificationManager == null) {
+            return;
+        }
+        notificationManager.notify(1, mBuilder.build());
     }
 
 

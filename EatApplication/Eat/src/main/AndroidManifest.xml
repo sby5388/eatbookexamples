@@ -4,13 +4,9 @@
     android:versionCode="1"
     android:versionName="1.0">
 
-    <uses-sdk
-        android:minSdkVersion="16"
-        android:targetSdkVersion="16"/>
-
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS" />
     <uses-permission android:name="com.android.browser.permission.WRITE_HISTORY_BOOKMARKS" />
@@ -18,184 +14,113 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name">
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
         <activity
             android:name=".StartActivity"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.Black" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <!-- CHAPTER 1 -->
-        <activity
-            android:name="com.eat.chapter1.Chapter1Activity"
-            android:theme="@android:style/Theme.Black" />
+        <activity android:name="com.eat.chapter1.Chapter1Activity" />
 
         <!-- CHAPTER 2 -->
-        <activity
-            android:name="com.eat.chapter2.Chapter2Activity"
-            android:theme="@android:style/Theme.Black" />
+        <activity android:name="com.eat.chapter2.Chapter2Activity" />
 
         <!-- CHAPTER 3 -->
-        <activity
-            android:name="com.eat.chapter3.Chapter3Activity"
-            android:theme="@android:style/Theme.Black" />
+        <activity android:name="com.eat.chapter3.Chapter3Activity" />
 
         <!-- CHAPTER 4 -->
-        <activity
-            android:name="com.eat.chapter4.Chapter4Activity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name=".chapter4.PipeExampleActivity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name=".chapter4.LooperActivity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name=".chapter4.ConsumeAndQuitThreadActivity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name=".chapter4.HandlerExampleActivity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name=".chapter4.HandlerCallbackActivity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name=".chapter4.MQDebugActivity"
-            android:theme="@android:style/Theme.Black" />
+        <activity android:name="com.eat.chapter4.Chapter4Activity" />
+        <activity android:name=".chapter4.PipeExampleActivity" />
+        <activity android:name=".chapter4.LooperActivity" />
+        <activity android:name=".chapter4.ConsumeAndQuitThreadActivity" />
+        <activity android:name=".chapter4.HandlerExampleActivity" />
+        <activity android:name=".chapter4.HandlerCallbackActivity" />
+        <activity android:name=".chapter4.MQDebugActivity" />
 
         <!-- CHAPTER 5 -->
-        <activity
-            android:name="com.eat.chapter5.Chapter5Activity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name="com.eat.chapter5.MessengerOnewayActivity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name="com.eat.chapter5.MessengerTwowayActivity"
-            android:theme="@android:style/Theme.Black" />
-        <service android:name="com.eat.chapter5.WorkerThreadService"
+        <activity android:name="com.eat.chapter5.Chapter5Activity" />
+        <activity android:name="com.eat.chapter5.MessengerOneWayActivity" />
+        <activity android:name="com.eat.chapter5.MessengerTwoWayActivity" />
+
+        <service
+            android:name="com.eat.chapter5.WorkerThreadService"
             android:process=":eatservice">
             <intent-filter>
-                <action android:name="com.eat.chapter5.ACTION_BIND"/>
+                <action android:name="com.eat.chapter5.ACTION_BIND" />
             </intent-filter>
         </service>
 
         <!-- CHAPTER 6 -->
-        <activity
-            android:name="com.eat.chapter6.Chapter6Activity"
-            android:theme="@android:style/Theme.Black" />
+        <activity android:name="com.eat.chapter6.Chapter6Activity" />
 
         <!-- CHAPTER 7 -->
-        <activity
-            android:name="com.eat.chapter7.Chapter7Activity"
-            android:theme="@android:style/Theme.Black" />
+        <activity android:name="com.eat.chapter7.Chapter7Activity" />
         <activity
             android:name="com.eat.chapter7.ThreadRetainActivity"
             android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name="com.eat.chapter7.ThreadRetainWithFragmentActivity"
-            android:theme="@android:style/Theme.Black" />
+        <activity android:name="com.eat.chapter7.ThreadRetainWithFragmentActivity" />
 
         <!-- CHAPTER 8 -->
-        <activity
-            android:name="com.eat.chapter8.Chapter8Activity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name="com.eat.chapter8.SharedPreferencesActivity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name="com.eat.chapter8.ChainedNetworkActivity"
-            android:theme="@android:style/Theme.Black" />
+        <activity android:name="com.eat.chapter8.Chapter8Activity" />
+        <activity android:name="com.eat.chapter8.SharedPreferencesActivity" />
+        <activity android:name="com.eat.chapter8.ChainedNetworkActivity" />
 
         <!-- CHAPTER 9 -->
-        <activity
-            android:name="com.eat.chapter9.Chapter9Activity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name="com.eat.chapter9.InvokeActivity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name="com.eat.chapter9.ECSImageDownloaderActivity"
-            android:theme="@android:style/Theme.Black" />
+        <activity android:name="com.eat.chapter9.Chapter9Activity" />
+        <activity android:name="com.eat.chapter9.InvokeActivity" />
+        <activity android:name="com.eat.chapter9.ECSImageDownloaderActivity" />
 
         <!-- CHAPTER 10 -->
-        <activity
-            android:name="com.eat.chapter10.Chapter10Activity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name="com.eat.chapter10.FileDownloadActivity"
-            android:theme="@android:style/Theme.Black" />
+        <activity android:name="com.eat.chapter10.Chapter10Activity" />
+        <activity android:name="com.eat.chapter10.FileDownloadActivity" />
 
         <!-- CHAPTER 11 -->
-        <activity
-            android:name="com.eat.chapter11.Chapter11Activity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name="com.eat.chapter11.BluetoothActivity"
-            android:theme="@android:style/Theme.Black" />
-        <service android:name="com.eat.chapter11.BluetoothService"/>
-        <activity
-            android:name="com.eat.chapter11.DownloadActivity"
-            android:theme="@android:style/Theme.Black" />
+        <activity android:name="com.eat.chapter11.Chapter11Activity" />
+        <activity android:name="com.eat.chapter11.BluetoothActivity" />
+
+        <service android:name="com.eat.chapter11.BluetoothService" />
+        <activity android:name="com.eat.chapter11.DownloadActivity" />
         <service android:name="com.eat.chapter11.DownloadService">
             <intent-filter>
-                <action android:name="com.eat.ACTION_DOWNLOAD"/>
+                <action android:name="com.eat.ACTION_DOWNLOAD" />
                 <data android:scheme="http" />
             </intent-filter>
         </service>
-        <activity
-            android:name="com.eat.chapter11.BoundLocalActivity"
-            android:theme="@android:style/Theme.Black" />
-        <service android:name="com.eat.chapter11.BoundLocalService"/>
-        <activity
-            android:name="com.eat.chapter11.BoundLocalActivity2"
-            android:theme="@android:style/Theme.Black" />
-        <service android:name="com.eat.chapter11.BoundLocalService2"/>
+        <activity android:name="com.eat.chapter11.BoundLocalActivity" />
+        <service android:name="com.eat.chapter11.BoundLocalService" />
+        <activity android:name="com.eat.chapter11.BoundLocalActivity2" />
+        <service android:name="com.eat.chapter11.BoundLocalService2" />
 
         <!-- CHAPTER 12 -->
-        <activity
-            android:name="com.eat.chapter12.Chapter12Activity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name="com.eat.chapter12.WebServiceActivity"
-            android:theme="@android:style/Theme.Black" />
-        <service android:name="com.eat.chapter12.WebService"/>
-        <activity
-            android:name="com.eat.chapter12.AlarmBroadcastActivity"
-            android:theme="@android:style/Theme.Black" />
-        <service android:name="com.eat.chapter12.NetworkCheckerIntentService"/>
+        <activity android:name="com.eat.chapter12.Chapter12Activity" />
+        <activity android:name="com.eat.chapter12.WebServiceActivity" />
+
+        <service android:name="com.eat.chapter12.WebService" />
+        <activity android:name="com.eat.chapter12.AlarmBroadcastActivity" />
+        <service android:name="com.eat.chapter12.NetworkCheckerIntentService" />
+        <service android:name=".ch11copy.Ch11CopyDownloadService" />
 
         <!-- CHAPTER 13 -->
-        <activity
-            android:name="com.eat.chapter13.Chapter13Activity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name="com.eat.chapter13.ExpandableContactListActivity"
-            android:theme="@android:style/Theme.Black" />
+        <activity android:name="com.eat.chapter13.Chapter13Activity" />
+        <activity android:name="com.eat.chapter13.ExpandableContactListActivity" />
 
         <!-- CHAPTER 14 -->
-        <activity
-            android:name="com.eat.chapter14.Chapter14Activity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name="com.eat.chapter14.BasicActivity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name="com.eat.chapter14.ChromeBookmarkActivity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name="com.eat.chapter14.ContactActivity"
-            android:theme="@android:style/Theme.Black" />
-        <activity
-            android:name="com.eat.chapter14.FileActivity"
-            android:theme="@android:style/Theme.Black" />
+        <activity android:name="com.eat.chapter14.Chapter14Activity" />
+        <activity android:name="com.eat.chapter14.BasicActivity" />
+        <activity android:name="com.eat.chapter14.ChromeBookmarkActivity" />
+        <activity android:name="com.eat.chapter14.ContactActivity" />
+        <activity android:name="com.eat.chapter14.FileActivity" />
 
     </application>
 

@@ -1,6 +1,5 @@
 package com.eat.chapter8;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -9,9 +8,10 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.os.Process;
 import android.os.SystemClock;
+import android.support.v7.app.AppCompatActivity;
 
 
-public class ChainedNetworkActivity extends Activity {
+public class ChainedNetworkActivity extends AppCompatActivity {
 
     private static final int DIALOG_LOADING = 0;
 
@@ -89,6 +89,7 @@ public class ChainedNetworkActivity extends Activity {
     private NetworkHandlerThread mThread;
 
 
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mThread = new NetworkHandlerThread();
@@ -100,10 +101,10 @@ public class ChainedNetworkActivity extends Activity {
         Dialog dialog = null;
         switch (id) {
             case DIALOG_LOADING:
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Loading...");
-            dialog = builder.create();
-            break;
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("Loading...");
+                dialog = builder.create();
+                break;
         }
         return dialog;
     }

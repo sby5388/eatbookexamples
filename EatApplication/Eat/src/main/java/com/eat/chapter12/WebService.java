@@ -35,6 +35,9 @@ public class WebService extends IntentService {
         super(TAG);
     }
 
+    /**
+     * todo 运行在工作线程中的
+     */
     @Override
     protected void onHandleIntent(Intent intent) {
 

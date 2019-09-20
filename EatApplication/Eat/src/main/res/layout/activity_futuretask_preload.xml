@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Status:"/>
+            android:text="Status:" />
+
         <TextView
             android:id="@+id/text_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:text="Not started"/>
+            android:text="Not started" />
     </LinearLayout>
 
     <LinearLayout
@@ -27,35 +29,38 @@
         android:orientation="horizontal">
 
         <Button
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="onStartLoad"
-            android:text="Start load"/>
+
+            android:text="Start load" />
+        <!--android:onClick="onStartLoad"-->
 
         <Button
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="onRetrieveResult"
-            android:text="Retrieve result"/>
+
+            android:text="Retrieve result" />
+        <!--android:onClick="onRetrieveResult"-->
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Loaded data:"/>
+            android:text="Loaded data:" />
+
         <TextView
             android:id="@+id/text_loaded_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
+            android:layout_marginLeft="@dimen/activity_horizontal_margin" />
     </LinearLayout>
-
 
 
 </LinearLayout>

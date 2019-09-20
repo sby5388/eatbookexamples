@@ -2,6 +2,7 @@ package com.eat.chapter14;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
@@ -12,12 +13,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 
-public class FileActivity extends Activity {
+public class FileActivity extends AppCompatActivity {
 
     private static final String TAG = "FileActivity";
 
     private static int mCount; // A count to append to file names
 
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file);

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.LogPrinter;
 import android.view.View;
@@ -12,11 +13,12 @@ import android.view.View;
 import com.eat.R;
 
 
-public class MQDebugActivity extends Activity {
+public class MQDebugActivity extends AppCompatActivity {
 
     private static final String TAG = "EAT";
     Handler mWorkerHandler;
 
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mq_debug);
@@ -51,6 +53,7 @@ public class MQDebugActivity extends Activity {
         }, 400);
         mWorkerHandler.sendEmptyMessage(5);
 
+        // TODO: 2019/9/9 一种打印日志的形式？
         mWorkerHandler.dump(new LogPrinter(Log.DEBUG, TAG), "");
     }
 }

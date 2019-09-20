@@ -1,21 +1,20 @@
 package com.eat.chapter4;
 
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
-
-
-        import android.app.Activity;
-        import android.os.Bundle;
-        import android.text.TextWatcher;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
-        import com.eat.R;
 
-        import java.io.IOException;
-        import java.io.PipedReader;
-        import java.io.PipedWriter;
+import com.eat.R;
+
+import java.io.IOException;
+import java.io.PipedReader;
+import java.io.PipedWriter;
 
 
-public class PipeExampleActivity extends Activity {
+public class PipeExampleActivity extends AppCompatActivity {
 
     private static final String TAG = "PipeExampleActivity";
     private EditText editText;
@@ -25,6 +24,7 @@ public class PipeExampleActivity extends Activity {
 
     private Thread workerThread;
 
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -48,9 +48,11 @@ public class PipeExampleActivity extends Activity {
             public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
                 try {
                     // Only handle addition of characters
-                    if(count > before) {
+                    if (count > before) {
                         // Write the last entered character to the pipe
                         w.write(charSequence.subSequence(before, count).toString());
+                        // TODO: 2019/8/21 write char[]
+//                        w.write(charSequence.toString().toCharArray(),0,charSequence.length());
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -78,17 +80,20 @@ public class PipeExampleActivity extends Activity {
     }
 
     private static class TextHandlerTask implements Runnable {
-        private final PipedReader reader;
+        private final PipedReader mReader;
 
-        public TextHandlerTask(PipedReader reader){
-            this.reader = reader;
+        private TextHandlerTask(PipedReader reader) {
+            this.mReader = reader;
         }
+
         @Override
         public void run() {
-            while(!Thread.currentThread().isInterrupted()){
+            // TODO: 2019/8/21 通过一个子线程-开启死循环来获取 ，如果一直没有传输任务，会浪费很多资源
+
+            while (!Thread.currentThread().isInterrupted()) {
                 try {
                     int i;
-                    while((i = reader.read()) != -1){
+                    while ((i = mReader.read()) != -1) {
                         char c = (char) i;
                         //ADD TEXT PROCESSING LOGIC HERE
                         Log.d(TAG, "char = " + c);

@@ -4,8 +4,8 @@ import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -28,7 +28,11 @@ public class BluetoothService extends Service {
     private boolean mListening = false;
     private Thread listeningThread;
 
+    public static Intent newIntent(Context context) {
+        return new Intent(context, BluetoothService.class);
+    }
 
+    @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
@@ -42,7 +46,7 @@ public class BluetoothService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (mAdapter != null) {
-            if (intent.getStringExtra(COMMAND_KEY).equals(COMMAND_START_LISTENING) && mListening == false) {
+            if (!mListening && intent.getStringExtra(COMMAND_KEY).equals(COMMAND_START_LISTENING)) {
                 startListening();
             }
         }
