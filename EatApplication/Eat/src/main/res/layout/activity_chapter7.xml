@@ -18,5 +18,10 @@
             android:layout_height="wrap_content"
             android:text="ThreadRetainFragment"
             android:onClick="onThreadRetainFragment"/>
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="CopyThreadRetainActivity"
+            android:onClick="CopyOnThreadRetainActivity"/>
     </LinearLayout>
 </ScrollView>

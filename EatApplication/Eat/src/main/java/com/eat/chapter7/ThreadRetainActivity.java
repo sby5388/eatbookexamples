@@ -8,13 +8,16 @@ import android.widget.TextView;
 
 import com.eat.R;
 
+// TODO: 2019/9/23 线程保留 ,Activity 销毁时 继续存活
+// FIXME: 2019/9/23 并没有出现预期的效果，关闭Activity 界面后在规定时间内返回Activity，并没有显示新的文本
 
 public class ThreadRetainActivity extends AppCompatActivity {
 
     private static class MyThread extends Thread {
+        // TODO: 2019/9/23 当前的例子会出现内存泄露的情况，需要弱应用 代替强引用
         private ThreadRetainActivity mActivity;
 
-        public MyThread(ThreadRetainActivity activity) {
+        MyThread(ThreadRetainActivity activity) {
             mActivity = activity;
         }
 
@@ -61,6 +64,7 @@ public class ThreadRetainActivity extends AppCompatActivity {
      * {@link android.app.Activity#onRetainNonConfigurationInstance}
      * 而是要使用
      * {@link AppCompatActivity#onRetainCustomNonConfigurationInstance}
+     *
      * @return
      */
     @Override

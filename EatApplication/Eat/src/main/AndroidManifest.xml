@@ -19,6 +19,8 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
+        <activity android:name=".chapter7.CopyThreadRetainActivity"></activity>
+        <activity android:name=".chapter8.TempActivity" />
         <activity
             android:name=".StartActivity"
             android:label="@string/app_name">
@@ -31,16 +33,16 @@
         </activity>
 
         <!-- CHAPTER 1 -->
-        <activity android:name="com.eat.chapter1.Chapter1Activity" />
+        <activity android:name=".chapter1.Chapter1Activity" />
 
         <!-- CHAPTER 2 -->
-        <activity android:name="com.eat.chapter2.Chapter2Activity" />
+        <activity android:name=".chapter2.Chapter2Activity" />
 
         <!-- CHAPTER 3 -->
-        <activity android:name="com.eat.chapter3.Chapter3Activity" />
+        <activity android:name=".chapter3.Chapter3Activity" />
 
         <!-- CHAPTER 4 -->
-        <activity android:name="com.eat.chapter4.Chapter4Activity" />
+        <activity android:name=".chapter4.Chapter4Activity" />
         <activity android:name=".chapter4.PipeExampleActivity" />
         <activity android:name=".chapter4.LooperActivity" />
         <activity android:name=".chapter4.ConsumeAndQuitThreadActivity" />
@@ -49,12 +51,12 @@
         <activity android:name=".chapter4.MQDebugActivity" />
 
         <!-- CHAPTER 5 -->
-        <activity android:name="com.eat.chapter5.Chapter5Activity" />
-        <activity android:name="com.eat.chapter5.MessengerOneWayActivity" />
-        <activity android:name="com.eat.chapter5.MessengerTwoWayActivity" />
+        <activity android:name=".chapter5.Chapter5Activity" />
+        <activity android:name=".chapter5.MessengerOneWayActivity" />
+        <activity android:name=".chapter5.MessengerTwoWayActivity" />
 
         <service
-            android:name="com.eat.chapter5.WorkerThreadService"
+            android:name=".chapter5.WorkerThreadService"
             android:process=":eatservice">
             <intent-filter>
                 <action android:name="com.eat.chapter5.ACTION_BIND" />
@@ -62,66 +64,73 @@
         </service>
 
         <!-- CHAPTER 6 -->
-        <activity android:name="com.eat.chapter6.Chapter6Activity" />
+        <activity android:name=".chapter6.Chapter6Activity" />
 
         <!-- CHAPTER 7 -->
-        <activity android:name="com.eat.chapter7.Chapter7Activity" />
-        <activity
-            android:name="com.eat.chapter7.ThreadRetainActivity"
-            android:theme="@android:style/Theme.Black" />
-        <activity android:name="com.eat.chapter7.ThreadRetainWithFragmentActivity" />
+        <activity android:name=".chapter7.Chapter7Activity" />
+        <activity android:name=".chapter7.ThreadRetainActivity" />
+        <activity android:name=".chapter7.ThreadRetainWithFragmentActivity" />
 
         <!-- CHAPTER 8 -->
-        <activity android:name="com.eat.chapter8.Chapter8Activity" />
-        <activity android:name="com.eat.chapter8.SharedPreferencesActivity" />
-        <activity android:name="com.eat.chapter8.ChainedNetworkActivity" />
+        <activity android:name=".chapter8.Chapter8Activity" />
+        <activity android:name=".chapter8.SharedPreferencesActivity" />
+        <activity android:name=".chapter8.ChainedNetworkActivity" />
+        <activity android:name=".chapter8.ChainedNetworkCopyActivity" />
 
         <!-- CHAPTER 9 -->
-        <activity android:name="com.eat.chapter9.Chapter9Activity" />
-        <activity android:name="com.eat.chapter9.InvokeActivity" />
-        <activity android:name="com.eat.chapter9.ECSImageDownloaderActivity" />
+        <activity android:name=".chapter9.Chapter9Activity" />
+        <activity android:name=".chapter9.InvokeActivity" />
+        <activity android:name=".chapter9.ECSImageDownloaderActivity" />
 
         <!-- CHAPTER 10 -->
-        <activity android:name="com.eat.chapter10.Chapter10Activity" />
-        <activity android:name="com.eat.chapter10.FileDownloadActivity" />
+        <activity android:name=".chapter10.Chapter10Activity" />
+        <activity android:name=".chapter10.FileDownloadActivity" />
 
         <!-- CHAPTER 11 -->
-        <activity android:name="com.eat.chapter11.Chapter11Activity" />
-        <activity android:name="com.eat.chapter11.BluetoothActivity" />
+        <activity android:name=".chapter11.Chapter11Activity" />
+        <activity android:name=".chapter11.BluetoothActivity" />
 
-        <service android:name="com.eat.chapter11.BluetoothService" />
-        <activity android:name="com.eat.chapter11.DownloadActivity" />
-        <service android:name="com.eat.chapter11.DownloadService">
+        <service android:name=".chapter11.BluetoothService" />
+
+        <activity android:name=".chapter11.DownloadActivity" />
+
+        <service android:name=".chapter11.DownloadService">
             <intent-filter>
                 <action android:name="com.eat.ACTION_DOWNLOAD" />
+
                 <data android:scheme="http" />
             </intent-filter>
         </service>
-        <activity android:name="com.eat.chapter11.BoundLocalActivity" />
-        <service android:name="com.eat.chapter11.BoundLocalService" />
-        <activity android:name="com.eat.chapter11.BoundLocalActivity2" />
-        <service android:name="com.eat.chapter11.BoundLocalService2" />
+
+        <activity android:name=".chapter11.BoundLocalActivity" />
+
+        <service android:name=".chapter11.BoundLocalService" />
+
+        <activity android:name=".chapter11.BoundLocalActivity2" />
+
+        <service android:name=".chapter11.BoundLocalService2" />
 
         <!-- CHAPTER 12 -->
-        <activity android:name="com.eat.chapter12.Chapter12Activity" />
-        <activity android:name="com.eat.chapter12.WebServiceActivity" />
+        <activity android:name=".chapter12.Chapter12Activity" />
+        <activity android:name=".chapter12.WebServiceActivity" />
 
-        <service android:name="com.eat.chapter12.WebService" />
-        <activity android:name="com.eat.chapter12.AlarmBroadcastActivity" />
-        <service android:name="com.eat.chapter12.NetworkCheckerIntentService" />
+        <service android:name=".chapter12.WebService" />
+
+        <activity android:name=".chapter12.AlarmBroadcastActivity" />
+
+        <service android:name=".chapter12.NetworkCheckerIntentService" />
         <service android:name=".ch11copy.Ch11CopyDownloadService" />
 
         <!-- CHAPTER 13 -->
-        <activity android:name="com.eat.chapter13.Chapter13Activity" />
-        <activity android:name="com.eat.chapter13.ExpandableContactListActivity" />
+        <activity android:name=".chapter13.Chapter13Activity" />
+        <activity android:name=".chapter13.ExpandableContactListActivity" />
 
         <!-- CHAPTER 14 -->
-        <activity android:name="com.eat.chapter14.Chapter14Activity" />
-        <activity android:name="com.eat.chapter14.BasicActivity" />
-        <activity android:name="com.eat.chapter14.ChromeBookmarkActivity" />
-        <activity android:name="com.eat.chapter14.ContactActivity" />
-        <activity android:name="com.eat.chapter14.FileActivity" />
-
+        <activity android:name=".chapter14.Chapter14Activity" />
+        <activity android:name=".chapter14.BasicActivity" />
+        <activity android:name=".chapter14.ChromeBookmarkActivity" />
+        <activity android:name=".chapter14.ContactActivity" />
+        <activity android:name=".chapter14.FileActivity" />
     </application>
 
 </manifest>

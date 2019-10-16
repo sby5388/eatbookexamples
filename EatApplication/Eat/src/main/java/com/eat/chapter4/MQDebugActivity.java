@@ -1,6 +1,5 @@
 package com.eat.chapter4;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -16,7 +15,7 @@ import com.eat.R;
 public class MQDebugActivity extends AppCompatActivity {
 
     private static final String TAG = "EAT";
-    Handler mWorkerHandler;
+    private Handler mWorkerHandler;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

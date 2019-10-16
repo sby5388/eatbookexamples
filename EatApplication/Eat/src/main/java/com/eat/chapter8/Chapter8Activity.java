@@ -20,6 +20,12 @@ public class Chapter8Activity extends AppCompatActivity {
     }
 
     public void onChainedNetworkActivity(View v) {
+        // TODO: 2019/9/20 Chained:连接
         startActivity(new Intent(this, ChainedNetworkActivity.class));
+    }
+
+    public void onChainedNetworkActivityCopy(View v) {
+        // TODO: 2019/9/20 Chained:连接
+        startActivity(new Intent(this, ChainedNetworkCopyActivity.class));
     }
 }

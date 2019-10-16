@@ -1,6 +1,5 @@
 package com.eat.chapter4;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -14,6 +13,7 @@ import android.widget.TextView;
 
 import com.eat.R;
 
+import java.lang.ref.WeakReference;
 import java.util.Random;
 
 
@@ -32,7 +32,7 @@ public class HandlerExampleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_handler_example);
 
-        mBackgroundThread = new BackgroundThread();
+        mBackgroundThread = new BackgroundThread(this);
         mBackgroundThread.start();
 
         mText = (TextView) findViewById(R.id.text);
@@ -61,10 +61,12 @@ public class HandlerExampleActivity extends AppCompatActivity {
             switch (msg.what) {
                 case SHOW_PROGRESS_BAR:
                     mProgressBar.setVisibility(View.VISIBLE);
+                    mButton.setEnabled(false);
                     break;
                 case HIDE_PROGRESS_BAR:
                     mText.setText(String.valueOf(msg.arg1));
                     mProgressBar.setVisibility(View.INVISIBLE);
+                    mButton.setEnabled(true);
                     break;
                 default:
                     break;
@@ -72,9 +74,15 @@ public class HandlerExampleActivity extends AppCompatActivity {
         }
     };
 
-    private class BackgroundThread extends Thread {
+    private static class BackgroundThread extends Thread {
 
         private Handler mBackgroundHandler;
+        private final WeakReference<HandlerExampleActivity> mReference;
+
+
+        BackgroundThread(HandlerExampleActivity activity) {
+            mReference = new WeakReference<>(activity);
+        }
 
         @Override
         public void run() {
@@ -86,26 +94,31 @@ public class HandlerExampleActivity extends AppCompatActivity {
         /**
          * 模拟耗时操作：其中ThreadHandler
          */
-        public void doWork() {
+        private void doWork() {
             mBackgroundHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    Message uiMsg = mUiHandler.obtainMessage(SHOW_PROGRESS_BAR, 0,
+                    final HandlerExampleActivity activity = mReference.get();
+                    if (activity == null) {
+                        return;
+                    }
+                    final Handler mUiHandler = activity.mUiHandler;
+                    final Message uiMsg = mUiHandler.obtainMessage(SHOW_PROGRESS_BAR, 0,
                             0, null);
                     mUiHandler.sendMessage(uiMsg);
 
-                    Random r = new Random();
-                    int randomInt = r.nextInt(5000);
+                    final Random r = new Random();
+                    final int randomInt = r.nextInt(5000);
                     SystemClock.sleep(randomInt);
 
-                    uiMsg = mUiHandler.obtainMessage(HIDE_PROGRESS_BAR, randomInt,
+                    final Message uiMsgTime = mUiHandler.obtainMessage(HIDE_PROGRESS_BAR, randomInt,
                             0, null);
-                    mUiHandler.sendMessage(uiMsg);
+                    mUiHandler.sendMessage(uiMsgTime);
                 }
             });
         }
 
-        public void exit() {
+        private void exit() {
             mBackgroundHandler.getLooper().quit();
         }
     }

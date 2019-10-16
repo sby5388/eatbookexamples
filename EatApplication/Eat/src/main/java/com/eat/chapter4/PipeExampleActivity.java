@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.io.PipedReader;
 import java.io.PipedWriter;
 
-
+/**
+ * 管道流
+ */
 public class PipeExampleActivity extends AppCompatActivity {
 
     private static final String TAG = "PipeExampleActivity";

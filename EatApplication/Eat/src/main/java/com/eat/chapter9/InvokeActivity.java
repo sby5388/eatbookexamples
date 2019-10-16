@@ -39,6 +39,9 @@ public class InvokeActivity extends AppCompatActivity {
         simpleExecutor.execute(new Runnable() {
             @Override
             public void run() {
+                // TODO: 2019/9/21 java并发编程的Callable，有返回值的线程
+                // TODO: 2019/9/21 Callable,Future 相关类的使用
+
                 List<Callable<String>> tasks = new ArrayList<Callable<String>>();
                 tasks.add(new Callable<String>() {
                     @Override

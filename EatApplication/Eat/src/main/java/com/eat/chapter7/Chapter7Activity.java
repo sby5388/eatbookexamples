@@ -22,4 +22,8 @@ public class Chapter7Activity extends AppCompatActivity {
     public void onThreadRetainFragment(View v) {
         startActivity(new Intent(this, ThreadRetainWithFragmentActivity.class));
     }
+
+    public void CopyOnThreadRetainActivity(View v) {
+        startActivity(new Intent(this, CopyThreadRetainActivity.class));
+    }
 }

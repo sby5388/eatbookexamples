@@ -18,5 +18,10 @@
             android:layout_height="wrap_content"
             android:text="ChainedNetworkActivity"
             android:onClick="onChainedNetworkActivity"/>
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="ChainedNetworkActivityCopy"
+            android:onClick="onChainedNetworkActivityCopy"/>
     </LinearLayout>
 </ScrollView>
