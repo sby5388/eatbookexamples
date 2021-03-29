@@ -1,1 +1,1 @@
-include ':Eat', ':java8'
+include ':Eat'
