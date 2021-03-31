@@ -23,29 +23,6 @@ public class BoundLocalActivity2 extends AppCompatActivity {
     private boolean mIsBound;
     private BoundLocalService2 mBoundLocalService;
 
-    private static class ServiceListener implements BoundLocalService2.OperationListener {
-
-        private WeakReference<BoundLocalActivity2> mWeakActivity;
-
-        ServiceListener(BoundLocalActivity2 activity) {
-            this.mWeakActivity = new WeakReference<>(activity);
-        }
-
-        @Override
-        public void onOperationDone(final int someResult) {
-            final BoundLocalActivity2 localReferenceActivity = mWeakActivity.get();
-            if (localReferenceActivity != null) {
-                // TODO: 2019/9/10 运行在主线程上
-                localReferenceActivity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        localReferenceActivity.tvStatus.setText(String.valueOf(someResult));
-                    }
-                });
-            }
-        }
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,10 +46,32 @@ public class BoundLocalActivity2 extends AppCompatActivity {
         }
     }
 
-
     public void onClickExecuteOnClientUIThread(View v) {
         if (mBoundLocalService != null) {
             mBoundLocalService.doLongAsyncOperation(new ServiceListener(this));
+        }
+    }
+
+    private static class ServiceListener implements BoundLocalService2.OperationListener {
+
+        private WeakReference<BoundLocalActivity2> mWeakActivity;
+
+        ServiceListener(BoundLocalActivity2 activity) {
+            this.mWeakActivity = new WeakReference<>(activity);
+        }
+
+        @Override
+        public void onOperationDone(final int someResult) {
+            final BoundLocalActivity2 localReferenceActivity = mWeakActivity.get();
+            if (localReferenceActivity != null) {
+                // TODO: 2019/9/10 运行在主线程上
+                localReferenceActivity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        localReferenceActivity.tvStatus.setText(String.valueOf(someResult));
+                    }
+                });
+            }
         }
     }
 

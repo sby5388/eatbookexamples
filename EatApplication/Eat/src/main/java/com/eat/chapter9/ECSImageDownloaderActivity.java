@@ -19,7 +19,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-
+/**
+ * 图片下载
+ */
 public class ECSImageDownloaderActivity extends AppCompatActivity {
 
     private static final String TAG = "ECSImageDownloaderActivity";
@@ -36,6 +38,7 @@ public class ECSImageDownloaderActivity extends AppCompatActivity {
         DownloadCompletionService ecs = new DownloadCompletionService(Executors.newCachedThreadPool());
         new ConsumerThread(ecs).start();
 
+        // TODO: 2019/10/30 一共模拟下载了五个图片
         for (int i = 0; i < 5; i++) {
             // TODO: 2019/7/27 类型未经检查!
             ecs.submit(new ImageDownloadTask());
@@ -71,20 +74,21 @@ public class ECSImageDownloaderActivity extends AppCompatActivity {
         }
     }
 
+    // TODO: 2019/11/26  ExecutorCompletionService ???
     private class DownloadCompletionService extends ExecutorCompletionService {
 
         private ExecutorService mExecutor;
 
-        public DownloadCompletionService(ExecutorService executor) {
+        private DownloadCompletionService(ExecutorService executor) {
             super(executor);
             mExecutor = executor;
         }
 
-        public void shutdown() {
+        private void shutdown() {
             mExecutor.shutdown();
         }
 
-        public boolean isTerminated() {
+        private boolean isTerminated() {
             return mExecutor.isTerminated();
         }
     }

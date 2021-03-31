@@ -4,14 +4,13 @@ import android.app.ListFragment;
 import android.app.LoaderManager;
 import android.content.Loader;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileListFragment extends ListFragment implements
-        LoaderManager.LoaderCallbacks<List<String>>{
+        LoaderManager.LoaderCallbacks<List<String>> {
 
     private static final int FILE_LOADER_ID = 1;
 

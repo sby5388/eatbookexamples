@@ -52,8 +52,8 @@ class MyAdapter extends BaseAdapter {
     }
 
     private static class ViewHolder {
-        private final TextView mTextViewName;
         final ImageView mImageView;
+        private final TextView mTextViewName;
 
         ViewHolder(View view) {
             mTextViewName = (TextView) view.findViewById(R.id.textView_name_temp);

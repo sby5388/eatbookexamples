@@ -19,11 +19,9 @@ import java.io.PipedWriter;
 public class PipeExampleActivity extends AppCompatActivity {
 
     private static final String TAG = "PipeExampleActivity";
-    private EditText editText;
-
     PipedReader r;
     PipedWriter w;
-
+    private EditText editText;
     private Thread workerThread;
 
     @Override
@@ -54,7 +52,7 @@ public class PipeExampleActivity extends AppCompatActivity {
                         // Write the last entered character to the pipe
                         w.write(charSequence.subSequence(before, count).toString());
                         // TODO: 2019/8/21 write char[]
-//                        w.write(charSequence.toString().toCharArray(),0,charSequence.length());
+                        w.write(charSequence.toString().toCharArray(), 0, charSequence.length());
                     }
                 } catch (IOException e) {
                     e.printStackTrace();

@@ -25,7 +25,51 @@ public class ChainedNetworkCopyActivity extends AppCompatActivity {
     private static final int DISMISS_LOADING = 2;
 
     private MyFragment mFragment;
+    private Handler mUiHandler = new DialogHandler(this);
+    private NetworkHandlerThread mThread;
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mFragment = new MyFragment();
+        mThread = new NetworkHandlerThread(this);
+        mThread.start();
+    }
+
+    /**
+     * Ensure that the background thread is terminated with the Activity.
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mThread.quit();
+    }
+
+    private void temp() {
+    }
+
+    private void tempCancelSameMessageWhat(Handler handler) {
+        final int stepA = 10;
+        // TODO: 2019/10/30 判断是否存在相关的任务/动作，仅适用于某些特殊的场景
+        final boolean hasStepA = handler.hasMessages(stepA);
+
+        if (hasStepA) {
+            //method1 cancel original Message ,add new Message
+            handler.removeMessages(stepA);
+            handler.obtainMessage(stepA);
+        }
+
+//        method2: avoid add same Message
+        if (hasStepA) {
+
+            return;
+        }
+        handler.obtainMessage(stepA).sendToTarget();
+
+
+    }
+
+    // TODO: 2019/11/5 为什么Fragment必须是 public 的
     public static class MyFragment extends DialogFragment {
         @Override
         public Dialog getDialog() {
@@ -42,8 +86,6 @@ public class ChainedNetworkCopyActivity extends AppCompatActivity {
             return builder.create();
         }
     }
-
-    private Handler mUiHandler = new DialogHandler(this);
 
     private static class DialogHandler extends Handler {
         private final WeakReference<ChainedNetworkCopyActivity> mReference;
@@ -74,12 +116,11 @@ public class ChainedNetworkCopyActivity extends AppCompatActivity {
         }
     }
 
-
     private static class NetworkHandlerThread extends HandlerThread {
         private static final int STATE_A = 1;
         private static final int STATE_B = 2;
-        private Handler mWorkHandler;
         private final WeakReference<ChainedNetworkCopyActivity> mWeakReference;
+        private Handler mWorkHandler;
 
         NetworkHandlerThread(ChainedNetworkCopyActivity activity) {
             super("NetworkHandlerThread", Process.THREAD_PRIORITY_BACKGROUND);
@@ -148,28 +189,5 @@ public class ChainedNetworkCopyActivity extends AppCompatActivity {
         public void fetchDataFromNetwork() {
             mWorkHandler.sendEmptyMessage(STATE_A);
         }
-    }
-
-    private NetworkHandlerThread mThread;
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mFragment = new MyFragment();
-        mThread = new NetworkHandlerThread(this);
-        mThread.start();
-    }
-
-    /**
-     * Ensure that the background thread is terminated with the Activity.
-     */
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mThread.quit();
-    }
-
-    private void temp() {
     }
 }

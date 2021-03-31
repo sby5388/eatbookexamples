@@ -9,16 +9,14 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.widget.SimpleCursorAdapter;
 
-public class ContactActivity extends ListActivity implements LoaderManager.LoaderCallbacks<Cursor>{
-
-    private static final int CONTACT_NAME_LOADER_ID = 0;
+public class ContactActivity extends ListActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     // Projection that defines contact display name only
-    static final String[] CONTACTS_SUMMARY_PROJECTION = new String[] {
+    static final String[] CONTACTS_SUMMARY_PROJECTION = new String[]{
             ContactsContract.Contacts._ID,
             ContactsContract.Contacts.DISPLAY_NAME
     };
-
+    private static final int CONTACT_NAME_LOADER_ID = 0;
     SimpleCursorAdapter mAdapter;
 
     @Override
@@ -31,8 +29,8 @@ public class ContactActivity extends ListActivity implements LoaderManager.Loade
     private void initAdapter() {
         mAdapter = new SimpleCursorAdapter(this,
                 android.R.layout.simple_list_item_1, null,
-                new String[] { ContactsContract.Contacts.DISPLAY_NAME },
-                new int[] { android.R.id.text1}, 0);
+                new String[]{ContactsContract.Contacts.DISPLAY_NAME},
+                new int[]{android.R.id.text1}, 0);
         setListAdapter(mAdapter);
     }
 

@@ -1,6 +1,5 @@
 package com.eat.chapter14;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -33,7 +32,7 @@ public class FileActivity extends AppCompatActivity {
             out = new BufferedOutputStream(new FileOutputStream(file));
             out.write(new String("Test").getBytes("UTF-8"));
             out.close();
-        } catch (Exception e){
+        } catch (Exception e) {
 
         }
         Log.d(TAG, "onAddFile - path = " + file.getAbsolutePath());

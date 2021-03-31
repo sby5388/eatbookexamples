@@ -1,6 +1,5 @@
 package com.eat.chapter14;
 
-import android.app.Activity;
 import android.app.LoaderManager;
 import android.content.Loader;
 import android.os.Bundle;

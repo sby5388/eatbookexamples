@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="fill_parent">
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical">
+
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="SharedPreferencesActivity"
-            android:onClick="onSharedPreferencesActivity"/>
+            android:onClick="onSharedPreferencesActivity"
+            android:text="SharedPreferencesActivity" />
+
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="ChainedNetworkActivity"
-            android:onClick="onChainedNetworkActivity"/>
+            android:onClick="onChainedNetworkActivity"
+            android:text="ChainedNetworkActivity" />
+
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="ChainedNetworkActivityCopy"
-            android:onClick="onChainedNetworkActivityCopy"/>
+            android:onClick="onChainedNetworkActivityCopy"
+            android:text="ChainedNetworkActivityCopy" />
     </LinearLayout>
 </ScrollView>

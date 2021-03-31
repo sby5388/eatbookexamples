@@ -12,6 +12,7 @@
     <uses-permission android:name="com.android.browser.permission.WRITE_HISTORY_BOOKMARKS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".App"
@@ -19,7 +20,15 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <activity android:name=".chapter7.CopyThreadRetainActivity"></activity>
+        <activity android:name=".temp.CountDownTimerActivity" />
+        <activity android:name=".chapter9.download.BrowserFileActivity" />
+        <activity android:name=".chapter9.download.TempDownloadActivity" />
+        <activity android:name=".chapter5.temp.CopyMessengerTwoWayActivity" />
+        <activity android:name=".chapter5.temp.CopyMessengerOneWayActivity" />
+        <activity android:name=".chapter5.temp.CopyChapter5Activity" />
+        <activity android:name=".chapter7.CopyThreadRetainActivity" />
+        <activity android:name=".chapter7.ThreadRetainAppcompatActivity" />
+        <activity android:name=".chapter7.ViewModelActivity" />
         <activity android:name=".chapter8.TempActivity" />
         <activity
             android:name=".StartActivity"
@@ -30,9 +39,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- CHAPTER 1 -->
+        </activity> <!-- CHAPTER 1 -->
         <activity android:name=".chapter1.Chapter1Activity" />
 
         <!-- CHAPTER 2 -->
@@ -69,6 +76,7 @@
         <!-- CHAPTER 7 -->
         <activity android:name=".chapter7.Chapter7Activity" />
         <activity android:name=".chapter7.ThreadRetainActivity" />
+
         <activity android:name=".chapter7.ThreadRetainWithFragmentActivity" />
 
         <!-- CHAPTER 8 -->
@@ -120,6 +128,7 @@
 
         <service android:name=".chapter12.NetworkCheckerIntentService" />
         <service android:name=".ch11copy.Ch11CopyDownloadService" />
+        <service android:name=".chapter5.temp.CopyWorkerThreadService" />
 
         <!-- CHAPTER 13 -->
         <activity android:name=".chapter13.Chapter13Activity" />

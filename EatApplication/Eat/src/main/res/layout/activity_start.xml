@@ -1,137 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="fill_parent">
 
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:stretchColumns="*"
-        android:shrinkColumns="*">
+        android:shrinkColumns="*"
+        android:stretchColumns="*">
 
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
+
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Chapter1"
                 android:layout_weight="1"
+                android:enabled="false"
                 android:onClick="onChapter1"
-                android:enabled="false"/>
+                android:text="Chapter1" />
+
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Chapter2"
                 android:layout_weight="1"
+                android:enabled="false"
                 android:onClick="onChapter2"
-                android:enabled="false"/>
+                android:text="Chapter2" />
         </TableRow>
 
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
+
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Chapter3"
                 android:layout_weight="1"
+                android:enabled="false"
                 android:onClick="onChapter3"
-                android:enabled="false"/>
+                android:text="Chapter3" />
+
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Chapter4"
                 android:layout_weight="1"
-                android:onClick="onChapter4"/>
+                android:onClick="onChapter4"
+                android:text="Chapter4" />
         </TableRow>
 
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
+
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Chapter5"
                 android:layout_weight="1"
-                android:onClick="onChapter5"/>
+                android:onClick="onChapter5"
+                android:text="Chapter5" />
+
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Chapter6"
                 android:layout_weight="1"
+                android:enabled="false"
                 android:onClick="onChapter6"
-                android:enabled="false"/>
+                android:text="Chapter6" />
         </TableRow>
 
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
+
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Chapter7"
                 android:layout_weight="1"
-                android:onClick="onChapter7"/>
+                android:onClick="onChapter7"
+                android:text="Chapter7" />
+
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Chapter8"
                 android:layout_weight="1"
-                android:onClick="onChapter8"/>
+                android:onClick="onChapter8"
+                android:text="Chapter8" />
         </TableRow>
 
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
+
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Chapter9"
                 android:layout_weight="1"
-                android:onClick="onChapter9"/>
+                android:onClick="onChapter9"
+                android:text="Chapter9" />
+
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Chapter10"
                 android:layout_weight="1"
-                android:onClick="onChapter10"/>
+                android:onClick="onChapter10"
+                android:text="Chapter10" />
         </TableRow>
 
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
+
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Chapter11"
                 android:layout_weight="1"
-                android:onClick="onChapter11"/>
+                android:onClick="onChapter11"
+                android:text="Chapter11" />
+
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Chapter12"
                 android:layout_weight="1"
-                android:onClick="onChapter12"/>
+                android:onClick="onChapter12"
+                android:text="Chapter12" />
         </TableRow>
 
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
+
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Chapter13"
                 android:layout_weight="1"
-                android:onClick="onChapter13"/>
+                android:onClick="onChapter13"
+                android:text="Chapter13" />
+
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Chapter14"
                 android:layout_weight="1"
-                android:onClick="onChapter14"/>
+                android:onClick="onChapter14"
+                android:text="Chapter14" />
         </TableRow>
     </TableLayout>
 </ScrollView>

@@ -1,8 +1,10 @@
 package com.eat.chapter12;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
+import android.app.IntentService;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.ResultReceiver;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -15,21 +17,18 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
-import android.app.IntentService;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.ResultReceiver;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class WebService extends IntentService {
-    private static final String TAG = WebService.class.getName();
     public static final int GET = 1;
     public static final int POST = 2;
-
     public static final String INTENT_KEY_REQUEST_TYPE = "com.eat.INTENT_KEY_REQUEST_TYPE";
     public static final String INTENT_KEY_JSON = "com.eat.INTENT_KEY_JSON";
     public static final String INTENT_KEY_RECEIVER = "com.eat.INTENT_KEY_RECEIVER";
     public static final String BUNDLE_KEY_REQUEST_RESULT = "com.eat.BUNDLE_KEY_REQUEST_RESULT";
+    private static final String TAG = WebService.class.getName();
 
     public WebService() {
         super(TAG);
@@ -43,7 +42,7 @@ public class WebService extends IntentService {
 
         Uri uri = intent.getData();
         int requestType = intent.getIntExtra(INTENT_KEY_REQUEST_TYPE, 0);
-        String json = (String)intent.getSerializableExtra(INTENT_KEY_JSON);
+        String json = (String) intent.getSerializableExtra(INTENT_KEY_JSON);
         ResultReceiver receiver = intent.getParcelableExtra(INTENT_KEY_RECEIVER);
 
         try {
@@ -57,7 +56,7 @@ public class WebService extends IntentService {
                 case POST: {
                     request = new HttpPost();
                     if (json != null) {
-                        ((HttpPost)request).setEntity(new StringEntity(json));
+                        ((HttpPost) request).setEntity(new StringEntity(json));
                     }
                     // Request setup omitted
                     break;
@@ -75,17 +74,14 @@ public class WebService extends IntentService {
                     Bundle resultBundle = new Bundle();
                     resultBundle.putString(BUNDLE_KEY_REQUEST_RESULT, EntityUtils.toString(httpEntity));
                     receiver.send(statusCode, resultBundle);
-                }
-                else {
+                } else {
                     receiver.send(statusCode, null);
                 }
-            }
-            else {
+            } else {
                 receiver.send(0, null);
 
             }
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             receiver.send(0, null);
         } catch (URISyntaxException e) {
             e.printStackTrace();

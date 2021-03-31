@@ -14,14 +14,15 @@ import android.widget.SimpleCursorTreeAdapter;
 
 
 public class ExpandableContactListActivity extends ExpandableListActivity {
+    // TODO: 2019/11/6 读取联系人？是否存在权限问题
 
-    private static final String[] CONTACTS_PROJECTION = new String[] {
+    private static final String[] CONTACTS_PROJECTION = new String[]{
             Contacts._ID,
             Contacts.DISPLAY_NAME
     };
     private static final int GROUP_ID_COLUMN_INDEX = 0;
 
-    private static final String[] PHONE_NUMBER_PROJECTION = new String[] {
+    private static final String[] PHONE_NUMBER_PROJECTION = new String[]{
             Phone._ID,
             Phone.NUMBER
     };
@@ -41,10 +42,10 @@ public class ExpandableContactListActivity extends ExpandableListActivity {
                 this,
                 android.R.layout.simple_expandable_list_item_1,
                 android.R.layout.simple_expandable_list_item_1,
-                new String[] { Contacts.DISPLAY_NAME }, // Name for group layouts
-                new int[] { android.R.id.text1 },
-                new String[] { Phone.NUMBER }, // Number for child layouts
-                new int[] { android.R.id.text1 });
+                new String[]{Contacts.DISPLAY_NAME}, // Name for group layouts
+                new int[]{android.R.id.text1},
+                new String[]{Phone.NUMBER}, // Number for child layouts
+                new int[]{android.R.id.text1});
 
         setListAdapter(mAdapter);
 
@@ -119,7 +120,7 @@ public class ExpandableContactListActivity extends ExpandableListActivity {
                     phoneNumbersUri,
                     PHONE_NUMBER_PROJECTION,
                     Phone.MIMETYPE + "=?",
-                    new String[] { Phone.CONTENT_ITEM_TYPE },
+                    new String[]{Phone.CONTENT_ITEM_TYPE},
                     null);
 
             return null;

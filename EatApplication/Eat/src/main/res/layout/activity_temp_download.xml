@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".chapter9.download.TempDownloadActivity">
+
+    <TextView
+        android:id="@+id/textView_download_path"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="uri path"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edittext_download_path"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:hint="input the remote path"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/textView_download_path" />
+
+    <TextView
+        android:id="@+id/textview_tip_save_path"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="save path"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edittext_download_path" />
+
+    <TextView
+        android:id="@+id/textview_save_path"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintLeft_toRightOf="@id/textview_tip_save_path"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edittext_download_path" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/button_select_save_path"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="select save path"
+        app:layout_constraintTop_toBottomOf="@id/textview_tip_save_path" />
+
+    <Button
+        android:id="@+id/button_start_download"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="start download"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_select_save_path" />
+
+
+</android.support.constraint.ConstraintLayout>

@@ -26,6 +26,26 @@ public class HandlerExampleActivity extends AppCompatActivity {
     private TextView mText;
     private Button mButton;
     private ProgressBar mProgressBar;
+    @SuppressWarnings("HandlerLeak")
+    private final Handler mUiHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+
+            switch (msg.what) {
+                case SHOW_PROGRESS_BAR:
+                    mProgressBar.setVisibility(View.VISIBLE);
+                    mButton.setEnabled(false);
+                    break;
+                case HIDE_PROGRESS_BAR:
+                    mText.setText(String.valueOf(msg.arg1));
+                    mProgressBar.setVisibility(View.INVISIBLE);
+                    mButton.setEnabled(true);
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,31 +73,10 @@ public class HandlerExampleActivity extends AppCompatActivity {
         mBackgroundThread.exit();
     }
 
-    @SuppressWarnings("HandlerLeak")
-    private final Handler mUiHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-
-            switch (msg.what) {
-                case SHOW_PROGRESS_BAR:
-                    mProgressBar.setVisibility(View.VISIBLE);
-                    mButton.setEnabled(false);
-                    break;
-                case HIDE_PROGRESS_BAR:
-                    mText.setText(String.valueOf(msg.arg1));
-                    mProgressBar.setVisibility(View.INVISIBLE);
-                    mButton.setEnabled(true);
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
-
     private static class BackgroundThread extends Thread {
 
-        private Handler mBackgroundHandler;
         private final WeakReference<HandlerExampleActivity> mReference;
+        private Handler mBackgroundHandler;
 
 
         BackgroundThread(HandlerExampleActivity activity) {

@@ -4,7 +4,6 @@ import android.content.AsyncQueryHandler;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.provider.BaseColumns;
-import android.provider.Browser;
 
 import com.eat.chapter14.ChromeBookmarkActivity;
 

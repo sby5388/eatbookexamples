@@ -16,7 +16,6 @@ import com.eat.R;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 
@@ -29,7 +28,7 @@ public class FileDownloadActivity extends AppCompatActivity {
             "http://d.lanrentuku.com/down/png/1904/food-icons-const.jpg"
     };
 
-    DownloadTask mFileDownloaderTask;
+    private DownloadTask mFileDownloaderTask;
 
     // Views from layout file
     private ProgressBar mProgressBar;
@@ -40,9 +39,9 @@ public class FileDownloadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_file_download);
-        mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        mProgressBar = findViewById(R.id.progress_bar);
         mProgressBar.setMax(DOWNLOAD_URLS.length);
-        mLayoutImages = (LinearLayout) findViewById(R.id.layout_images);
+        mLayoutImages = findViewById(R.id.layout_images);
 
         mFileDownloaderTask = new DownloadTask(this);
         mFileDownloaderTask.execute(DOWNLOAD_URLS);
@@ -55,9 +54,28 @@ public class FileDownloadActivity extends AppCompatActivity {
         mFileDownloaderTask.cancel(true);
     }
 
+    /**
+     * 根据链接直接获取图片
+     *
+     * @param path
+     * @return
+     */
+    private Bitmap temp(final String path) {
+        Bitmap bitmap = null;
+        try {
+            bitmap = BitmapFactory.decodeStream((InputStream) new URL(path).getContent());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bitmap;
+    }
+
+    /**
+     * 异步下载任务
+     */
     private static class DownloadTask extends AsyncTask<String, Bitmap, Void> {
 
-        private WeakReference<FileDownloadActivity> mReference;
+        private final WeakReference<FileDownloadActivity> mReference;
         private int mCount = 0;
 
         DownloadTask(FileDownloadActivity activity) {
@@ -92,6 +110,7 @@ public class FileDownloadActivity extends AppCompatActivity {
 
 
         // TODO: 2019/7/27 进度值不一定要使用数值，也可以是其他的类型
+        // TODO: 2019/11/5 更新进度时，同时更新UI
         @Override
         protected void onProgressUpdate(Bitmap... bitmaps) {
             super.onProgressUpdate(bitmaps);
@@ -126,16 +145,21 @@ public class FileDownloadActivity extends AppCompatActivity {
         }
 
 
+        /**
+         * runOnWorkerThread 在工作线程上运行
+         *
+         * @param url
+         * @return
+         */
         private Bitmap downloadFile(String url) {
             final int THREAD_ID = 10050;
             Bitmap bitmap = null;
             try {
+                // TODO: 2019/11/5 根据url直接获取图片的方法
                 bitmap = BitmapFactory
                         .decodeStream((InputStream) new URL(url)
                                 .getContent());
                 TrafficStats.setThreadStatsTag(THREAD_ID);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -144,7 +168,24 @@ public class FileDownloadActivity extends AppCompatActivity {
 
     }
 
-    private void temp(String path) {
-//        BitmapFactory.
+    /**
+     * runOnWorkerThread 在工作线程上运行
+     *
+     * @param url
+     * @return
+     */
+    private Bitmap downloadFile(String url) {
+        final int THREAD_ID = 10050;
+        Bitmap bitmap = null;
+        try {
+            // TODO: 2019/11/5 根据url直接获取图片的方法
+            bitmap = BitmapFactory
+                    .decodeStream((InputStream) new URL(url)
+                            .getContent());
+            TrafficStats.setThreadStatsTag(THREAD_ID);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bitmap;
     }
 }

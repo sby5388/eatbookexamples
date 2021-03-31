@@ -1,6 +1,5 @@
 package com.eat.chapter14;
 
-import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -11,7 +10,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.BaseColumns;
-import android.provider.Browser;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Adapter;
@@ -27,21 +25,6 @@ public class ChromeBookmarkActivity extends AppCompatActivity implements LoaderM
     private static final String _ID = BaseColumns._ID;
     private static final String TITLE = "title";
     private static final String URL = "url";
-
-    /**
-     * Definition of bookmark access information.
-     */
-    public interface ChromeBookmark {
-        int ID = 1;
-        Uri URI = Uri.parse("content://com.android.chrome.browser/bookmarks");
-        String[] PROJECTION = {
-                _ID,
-                TITLE,
-                URL
-        };
-    }
-
-
     ListView mListBookmarks;
     SimpleCursorAdapter mAdapter;
     ChromeBookmarkAsyncHandler mChromeBookmarkAsyncHandler;
@@ -96,7 +79,6 @@ public class ChromeBookmarkActivity extends AppCompatActivity implements LoaderM
         mAdapter.swapCursor(null);
     }
 
-
     public void onAddBookmark(View v) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         Fragment prev = getFragmentManager().findFragmentByTag("dialog");
@@ -113,5 +95,18 @@ public class ChromeBookmarkActivity extends AppCompatActivity implements LoaderM
     @Override
     public ChromeBookmarkAsyncHandler getChromeBookmarkAsyncHandler() {
         return mChromeBookmarkAsyncHandler;
+    }
+
+    /**
+     * Definition of bookmark access information.
+     */
+    public interface ChromeBookmark {
+        int ID = 1;
+        Uri URI = Uri.parse("content://com.android.chrome.browser/bookmarks");
+        String[] PROJECTION = {
+                _ID,
+                TITLE,
+                URL
+        };
     }
 }

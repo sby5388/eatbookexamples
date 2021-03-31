@@ -41,6 +41,26 @@ public class LooperActivity extends AppCompatActivity {
         mLooperThread.mHandler.getLooper().quit();
     }
 
+    private void temp(Message message) {
+        if (true) {
+            // TODO: 2019/10/16 一个消息对象只能被发送一次，不可以重复
+            return;
+        }
+        Handler handler = new Handler();
+        handler.sendMessage(message);
+        // TODO: 2019/10/16 把message 插入到队列首部
+        handler.sendMessageAtFrontOfQueue(handler.obtainMessage(0));
+        // TODO: 2019/10/16 延迟2秒钟后插入队列
+        handler.sendMessageAtTime(message, TimeUnit.SECONDS.toMillis(2));
+
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+    }
+
     private static class MyLooperThread extends Thread {
         private final WeakReference<LooperActivity> mReference;
         private Handler mHandler;
@@ -87,26 +107,5 @@ public class LooperActivity extends AppCompatActivity {
                 }
             }
         }
-    }
-
-
-    private void temp(Message message) {
-        if (true) {
-            // TODO: 2019/10/16 一个消息对象只能被发送一次，不可以重复
-            return;
-        }
-        Handler handler = new Handler();
-        handler.sendMessage(message);
-        // TODO: 2019/10/16 把message 插入到队列首部
-        handler.sendMessageAtFrontOfQueue(handler.obtainMessage(0));
-        // TODO: 2019/10/16 延迟2秒钟后插入队列
-        handler.sendMessageAtTime(message, TimeUnit.SECONDS.toMillis(2));
-
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        });
     }
 }

@@ -31,6 +31,38 @@ public class ChainedNetworkActivity extends AppCompatActivity {
             }
         }
     };
+    private NetworkHandlerThread mThread;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mThread = new NetworkHandlerThread();
+        mThread.start();
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        Dialog dialog = null;
+        switch (id) {
+            case DIALOG_LOADING:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("Loading...");
+                dialog = builder.create();
+                break;
+            default:
+                break;
+        }
+        return dialog;
+    }
+
+    /**
+     * Ensure that the background thread is terminated with the Activity.
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mThread.quit();
+    }
 
     private class NetworkHandlerThread extends HandlerThread {
         private static final int STATE_A = 1;
@@ -47,11 +79,11 @@ public class ChainedNetworkActivity extends AppCompatActivity {
             mHandler = new Handler(getLooper()) {
                 @Override
                 public void handleMessage(Message msg) {
-                    super.handleMessage(msg);
+                    // TODO: 2019/10/30 可以进行链式调用，完成步骤#STATE_A之后，继续完成步骤#STATE_B
                     switch (msg.what) {
                         case STATE_A:
                             dialogHandler.sendEmptyMessage(SHOW_LOADING);
-                            String result = networkOperation1();
+                            final String result = networkOperation1();
                             if (result != null) {
                                 sendMessage(obtainMessage(STATE_B, result));
                             } else {
@@ -84,37 +116,5 @@ public class ChainedNetworkActivity extends AppCompatActivity {
         public void fetchDataFromNetwork() {
             mHandler.sendEmptyMessage(STATE_A);
         }
-    }
-
-    private NetworkHandlerThread mThread;
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mThread = new NetworkHandlerThread();
-        mThread.start();
-    }
-
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        Dialog dialog = null;
-        switch (id) {
-            case DIALOG_LOADING:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("Loading...");
-                dialog = builder.create();
-                break;
-        }
-        return dialog;
-    }
-
-    /**
-     * Ensure that the background thread is terminated with the Activity.
-     */
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mThread.quit();
     }
 }

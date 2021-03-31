@@ -1,32 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="fill_parent">
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical">
+
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="BluetoothActivity"
-            android:onClick="onBluetoothActivity"/>
+            android:onClick="onBluetoothActivity"
+            android:text="BluetoothActivity" />
+
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="DownloadActivity"
-            android:onClick="onDownloadActivity"/>
+            android:onClick="onDownloadActivity"
+            android:text="DownloadActivity" />
+
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="BoundLocalActivity"
-            android:onClick="onBoundLocalActivity"/>
+            android:onClick="onBoundLocalActivity"
+            android:text="BoundLocalActivity" />
+
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="BoundLocalActivity2"
-            android:onClick="onBoundLocalActivity2"/>
+            android:onClick="onBoundLocalActivity2"
+            android:text="BoundLocalActivity2" />
     </LinearLayout>
 </ScrollView>

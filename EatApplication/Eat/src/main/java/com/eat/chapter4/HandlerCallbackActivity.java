@@ -14,13 +14,6 @@ import com.eat.R;
 public class HandlerCallbackActivity extends AppCompatActivity implements Handler.Callback {
 
     private static final String TAG = "HandlerCallbackActivity";
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_handler_callback);
-    }
-
     /**
      * TODO 使用Handler#CallBack时 没必要使用Handler的子类
      */
@@ -34,8 +27,15 @@ public class HandlerCallbackActivity extends AppCompatActivity implements Handle
         }
     };
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_handler_callback);
+    }
+
     /**
      * Callback.handleMessage should return true if the message is handled
+     *
      * @param msg
      * @return
      */
@@ -61,12 +61,12 @@ public class HandlerCallbackActivity extends AppCompatActivity implements Handle
     }
 
 
-
     /**
      * TODO: 2019/10/16 Handler事件分发的处理顺序
+     *
      * @see Handler#dispatchMessage(Message)
      */
-    private void temp(){
+    private void temp() {
         // TODO: 2019/10/16 优先处理顺序
         //1.如果Message.callback !=null -->Message.callback.run()，终止
         //2.如果Handler.callBack!=null  -->Handler.callback.handlerMassage(message),返回true时，不再进行3

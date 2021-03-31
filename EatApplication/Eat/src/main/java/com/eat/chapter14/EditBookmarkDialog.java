@@ -15,14 +15,13 @@ import com.eat.chapter4.ChromeBookmarkAsyncHandler;
 public class EditBookmarkDialog extends DialogFragment {
 
 
-    static EditBookmarkDialog newInstance() {
-        return new EditBookmarkDialog();
-    }
-
     ChromeBookmarkAsyncHandler mAsyncQueryHandler;
     private HostInterface mHostInterface;
-
     public EditBookmarkDialog() {
+    }
+
+    static EditBookmarkDialog newInstance() {
+        return new EditBookmarkDialog();
     }
 
     @Override
@@ -31,7 +30,7 @@ public class EditBookmarkDialog extends DialogFragment {
         if (activity instanceof HostInterface) {
             mHostInterface = (HostInterface) activity;
             mAsyncQueryHandler = mHostInterface.getChromeBookmarkAsyncHandler();
-        }else{
+        } else {
             throw new RuntimeException("activity must implements HostInterface");
         }
     }

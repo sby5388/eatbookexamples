@@ -1,7 +1,5 @@
 package com.eat.temp;
 
-import android.app.PendingIntent;
-
 import java.io.IOException;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;

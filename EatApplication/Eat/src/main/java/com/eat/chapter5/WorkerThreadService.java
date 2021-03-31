@@ -19,13 +19,13 @@ import android.util.Log;
 public class WorkerThreadService extends Service {
 
 
+    private static final String TAG = "WorkerThreadService";
+    private WorkerThread mWorkerThread;
+    private Messenger mWorkerMessenger;
+
     public static Intent newIntent(Context context) {
         return new Intent(context, WorkerThreadService.class);
     }
-
-    private static final String TAG = "WorkerThreadService";
-    WorkerThread mWorkerThread;
-    Messenger mWorkerMessenger;
 
     @Override
     public void onCreate() {
@@ -71,7 +71,7 @@ public class WorkerThreadService extends Service {
 
     private class WorkerThread extends Thread {
 
-        Handler mWorkerHandler;
+        private Handler mWorkerHandler;
 
         @SuppressLint("HandlerLeak")
         @Override
@@ -101,7 +101,7 @@ public class WorkerThreadService extends Service {
             Looper.loop();
         }
 
-        public void quit() {
+        private void quit() {
             mWorkerHandler.getLooper().quit();
         }
     }

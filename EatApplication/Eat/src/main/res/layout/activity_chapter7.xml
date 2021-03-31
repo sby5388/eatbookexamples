@@ -1,27 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="fill_parent">
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical">
+
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="ThreadRetainActivity"
-            android:onClick="onThreadRetainActivity"/>
+            android:onClick="onViewModelActivity"
+            android:text="ViewModelActivity" />
+
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="ThreadRetainFragment"
-            android:onClick="onThreadRetainFragment"/>
+            android:onClick="onThreadRetainActivity"
+            android:text="ThreadRetainActivity" />
+
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="CopyThreadRetainActivity"
-            android:onClick="CopyOnThreadRetainActivity"/>
+            android:onClick="onThreadRetainAppcompatActivity"
+            android:text="ThreadRetainAppcompatActivity-Support" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onThreadRetainFragment"
+            android:text="ThreadRetainFragment" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="CopyOnThreadRetainActivity"
+            android:text="CopyThreadRetainActivity" />
     </LinearLayout>
 </ScrollView>

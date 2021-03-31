@@ -1,4 +1,5 @@
 package com.eat.temp;
+
 import android.os.Handler;
 
 import java.util.concurrent.TimeUnit;
@@ -8,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class TempHandler {
 
-    private void temp(Handler handler){
+    private void temp(Handler handler) {
         handler.post(new Runnable() {
             @Override
             public void run() {
@@ -27,14 +28,14 @@ public class TempHandler {
             public void run() {
 
             }
-        },System.currentTimeMillis()+ TimeUnit.MINUTES.toMillis(2));
+        }, System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(2));
         // TODO: 2019/8/29 相对时间
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
 
             }
-        },TimeUnit.MINUTES.toMillis(2));
+        }, TimeUnit.MINUTES.toMillis(2));
 
 
     }

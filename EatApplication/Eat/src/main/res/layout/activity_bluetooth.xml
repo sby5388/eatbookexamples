@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:stretchColumns="*"
-        android:shrinkColumns="*">
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:shrinkColumns="*"
+    android:stretchColumns="*">
 
     <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
         <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Start listening"
-                android:layout_weight="1"
-                android:onClick="onStartListening"/>
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onStartListening"
+            android:text="Start listening" />
 
         <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Stop listening"
-                android:singleLine="false"
-                android:layout_weight="1"
-                android:onClick="onStopListening"/>
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onStopListening"
+            android:singleLine="false"
+            android:text="Stop listening" />
     </TableRow>
 </TableLayout>

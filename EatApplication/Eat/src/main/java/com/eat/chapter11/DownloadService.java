@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.IBinder;
 import android.os.SystemClock;
-import android.util.Log;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -18,7 +17,7 @@ public class DownloadService extends Service {
     private int mCommandCount;
 
     public static Intent newIntent(Context context) {
-        return new Intent(context,DownloadService.class);
+        return new Intent(context, DownloadService.class);
     }
 
     @Override

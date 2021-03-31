@@ -7,7 +7,7 @@ import android.util.Log;
 
 import java.util.Random;
 
-public class BasicLoader extends AsyncTaskLoader<Integer>{
+public class BasicLoader extends AsyncTaskLoader<Integer> {
 
     private static final String TAG = "BasicLoader";
 
@@ -29,7 +29,7 @@ public class BasicLoader extends AsyncTaskLoader<Integer>{
 
     @Override
     public Integer loadInBackground() {
-       return loadData();
+        return loadData();
     }
 
     private int loadData() {

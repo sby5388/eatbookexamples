@@ -14,10 +14,6 @@ public class BoundLocalService2 extends Service {
     private final ServiceBinder mBinder = new ServiceBinder();
     private final Executor executor = new TaskExecutor();
 
-    public interface OperationListener {
-        void onOperationDone(int i);
-    }
-
     @Override
     public IBinder onBind(Intent intent) {
         return mBinder;
@@ -28,13 +24,6 @@ public class BoundLocalService2 extends Service {
         super.onCreate();
 
     }
-
-    public class ServiceBinder extends Binder {
-        public BoundLocalService2 getService() {
-            return BoundLocalService2.this;
-        }
-    }
-
 
     public int doLongSyncOperation() {
         return longOperation();
@@ -53,6 +42,16 @@ public class BoundLocalService2 extends Service {
     private int longOperation() {
         SystemClock.sleep(10000);
         return 42;
+    }
+
+    public interface OperationListener {
+        void onOperationDone(int i);
+    }
+
+    public class ServiceBinder extends Binder {
+        public BoundLocalService2 getService() {
+            return BoundLocalService2.this;
+        }
     }
 
     public class TaskExecutor implements Executor {

@@ -27,13 +27,14 @@ public class MessengerOneWayActivity extends AppCompatActivity {
      */
     private boolean mBound = false;
     // TODO: 2019/9/9 Messenger?
+    //  可以跨进程发送和管理Message
     private Messenger mRemoteService = null;
 
     private ServiceConnection mRemoteConnection = new ServiceConnection() {
 
         @Override
         public void onServiceConnected(ComponentName className, IBinder service) {
-            Log.d(TAG, "onServiceConnected: className = "+className.toString());
+            Log.d(TAG, "onServiceConnected: className = " + className.toString());
             mRemoteService = new Messenger(service);
             Log.e(TAG, "onServiceConnected: ", new Exception());
             mBound = true;

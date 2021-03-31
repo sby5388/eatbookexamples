@@ -1,43 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="PipeActivity"
-            android:onClick="onPipeActivity"/>
+            android:onClick="onPipeActivity"
+            android:text="PipeActivity" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LooperActivity"
-            android:onClick="onLooperActivity"/>
+            android:onClick="onLooperActivity"
+            android:text="LooperActivity" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ConsumeAndQuitThread"
-            android:onClick="onConsumeAndQuitThreadActivity"/>
+            android:onClick="onConsumeAndQuitThreadActivity"
+            android:text="ConsumeAndQuitThread" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="HandlerExampleActivity"
-            android:onClick="onHandlerExampleActivity"/>
+            android:onClick="onHandlerExampleActivity"
+            android:text="HandlerExampleActivity" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="HandlerCallbackActivity"
-            android:onClick="onHandlerCallbackActivity"/>
+            android:onClick="onHandlerCallbackActivity"
+            android:text="HandlerCallbackActivity" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="MQDebugActivity"
-            android:onClick="onMQDebugActivity"/>
+            android:onClick="onMQDebugActivity"
+            android:text="MQDebugActivity" />
 
     </LinearLayout>
 </ScrollView>

@@ -15,8 +15,16 @@ public class Chapter7Activity extends AppCompatActivity {
         setContentView(R.layout.activity_chapter7);
     }
 
+    public void onViewModelActivity(View v) {
+        startActivity(new Intent(this, ViewModelActivity.class));
+    }
+
     public void onThreadRetainActivity(View v) {
         startActivity(new Intent(this, ThreadRetainActivity.class));
+    }
+
+    public void onThreadRetainAppcompatActivity(View v) {
+        startActivity(new Intent(this, ThreadRetainAppcompatActivity.class));
     }
 
     public void onThreadRetainFragment(View v) {

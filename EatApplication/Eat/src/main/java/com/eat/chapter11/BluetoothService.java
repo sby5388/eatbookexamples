@@ -15,10 +15,9 @@ import java.util.UUID;
 
 public class BluetoothService extends Service {
 
-    private static final String TAG = "BluetoothService";
     public static final String COMMAND_KEY = "command_key";
     public static final String COMMAND_START_LISTENING = "command_start_discovery";
-
+    private static final String TAG = "BluetoothService";
     private static final UUID MY_UUID = new UUID(323476234, 34587387);
     private static final String SDP_NAME = "custom_sdp_name";
 
